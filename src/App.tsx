@@ -1,12 +1,29 @@
-import { ChakraProvider, Box, Grid, theme } from '@chakra-ui/react'
-import { ColorModeSwitcher } from './ColorModeSwitcher'
+import {
+  extendTheme,
+  withDefaultColorScheme,
+  ChakraProvider,
+  Heading,
+  Text,
+  Switch,
+  Button,
+  VStack,
+} from '@chakra-ui/react'
+import customizedTheme from './theme'
 
-export const App = () => (
-  <ChakraProvider theme={theme}>
-    <Box textAlign="center" fontSize="xl">
-      <Grid minH="100vh" p={3}>
-        <ColorModeSwitcher justifySelf="flex-end" />
-      </Grid>
-    </Box>
-  </ChakraProvider>
+const theme = extendTheme(
+  customizedTheme,
+  withDefaultColorScheme({ colorScheme: 'brand' })
 )
+
+export const App = () => {
+  return (
+    <ChakraProvider theme={theme}>
+      <VStack>
+        <Heading>Heading</Heading>
+        <Text>Text</Text>
+        <Switch>Switch</Switch>
+        <Button>Button</Button>
+      </VStack>
+    </ChakraProvider>
+  )
+}

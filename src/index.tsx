@@ -9,7 +9,7 @@ const root = createRoot(document.getElementById('root') as HTMLElement)
 
 root.render(
   <StrictMode>
-    <ColorModeScript initialColorMode="system" />
+    <ColorModeScript initialColorMode="dark" />
     <App />
   </StrictMode>
 )
