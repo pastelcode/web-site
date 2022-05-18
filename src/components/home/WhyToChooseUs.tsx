@@ -15,7 +15,7 @@ import reasonsToChooseUs from './reasonsToChooseUs'
 const WhyToChooseUs = (): JSX.Element => (
   <HomeCard>
     <VStack>
-      <Heading>¿Por qué elegirnos?</Heading>
+      <Heading textAlign="center">¿Por qué elegirnos?</Heading>
       <Box height="3" />
       <Grid
         gap="3"
@@ -26,8 +26,6 @@ const WhyToChooseUs = (): JSX.Element => (
         maxWidth="1000px"
       >
         {reasonsToChooseUs.map(({ title, description, icon }) => {
-          const iconSize = '12'
-
           return (
             <GridItem
               key={title}
@@ -36,7 +34,7 @@ const WhyToChooseUs = (): JSX.Element => (
               paddingY="4"
               paddingX="7"
             >
-              <Icon width={iconSize} height={iconSize} as={icon} />
+              <Icon boxSize={12} as={icon} />
               <Box height="2" />
               <Heading size="lg">{title}</Heading>
               <Box height="2" />
