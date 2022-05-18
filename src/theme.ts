@@ -2,7 +2,7 @@ const customizedTheme = {
   styles: {
     global: {
       body: {
-        bg: '#181A28',
+        bg: '#091220',
       },
     },
   },

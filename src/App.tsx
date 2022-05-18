@@ -2,12 +2,11 @@ import {
   extendTheme,
   withDefaultColorScheme,
   ChakraProvider,
-  Heading,
-  Text,
-  Switch,
-  Button,
-  VStack,
 } from '@chakra-ui/react'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+
+import Home from './pages/Home'
+
 import customizedTheme from './theme'
 
 const theme = extendTheme(
@@ -15,15 +14,16 @@ const theme = extendTheme(
   withDefaultColorScheme({ colorScheme: 'brand' })
 )
 
-export const App = () => {
+const App = () => {
   return (
     <ChakraProvider theme={theme}>
-      <VStack>
-        <Heading>Heading</Heading>
-        <Text>Text</Text>
-        <Switch>Switch</Switch>
-        <Button>Button</Button>
-      </VStack>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </BrowserRouter>
     </ChakraProvider>
   )
 }
+
+export default App
