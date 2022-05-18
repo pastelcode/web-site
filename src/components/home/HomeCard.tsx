@@ -2,7 +2,7 @@ import { Box } from '@chakra-ui/react'
 
 interface Props {
   background?: string
-  compact: boolean
+  compact?: boolean
   children: JSX.Element
 }
 
