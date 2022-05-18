@@ -1,6 +1,7 @@
 import { VStack, Heading, Text, Box, Button } from '@chakra-ui/react'
-import { AtSignIcon, ArrowForwardIcon } from '@chakra-ui/icons'
+import { ArrowForwardIcon } from '@chakra-ui/icons'
 import HomeCard from './HomeCard'
+import ContactUsButton from '../ContactUsButton'
 
 const Introduction = (): JSX.Element => (
   <HomeCard background="url('/background.svg')" compact>
@@ -13,9 +14,7 @@ const Introduction = (): JSX.Element => (
         y dale doble click a ese mundo de posibilidades
       </Text>
       <Box height="4" />
-      <Button leftIcon={<AtSignIcon />} size="lg">
-        Contáctanos
-      </Button>
+      <ContactUsButton />
       <Box height="1" />
       <Button colorScheme="gray" rightIcon={<ArrowForwardIcon />}>
         Explora nuestros proyectos
