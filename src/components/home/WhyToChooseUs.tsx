@@ -13,7 +13,7 @@ import HomeCard from './HomeCard'
 import reasonsToChooseUs from './reasonsToChooseUs'
 
 const WhyToChooseUs = (): JSX.Element => (
-  <HomeCard compact={false}>
+  <HomeCard>
     <VStack>
       <Heading>¿Por qué elegirnos?</Heading>
       <Box height="3" />
