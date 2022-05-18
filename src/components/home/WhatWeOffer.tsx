@@ -17,7 +17,9 @@ import ourServices from './ourServices'
 const WhatWeOffer = (): JSX.Element => (
   <HomeCard>
     <VStack>
-      <Heading textAlign="center">Nuestros servicios</Heading>
+      <Heading id="nuestros-servicios" textAlign="center">
+        Nuestros servicios
+      </Heading>
       <Box height="3" />
       <Grid
         gap="3"

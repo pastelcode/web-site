@@ -15,7 +15,9 @@ import reasonsToChooseUs from './reasonsToChooseUs'
 const WhyToChooseUs = (): JSX.Element => (
   <HomeCard>
     <VStack>
-      <Heading textAlign="center">¿Por qué elegirnos?</Heading>
+      <Heading id="por-que-elegirnos" textAlign="center">
+        ¿Por qué elegirnos?
+      </Heading>
       <Box height="3" />
       <Grid
         gap="3"
