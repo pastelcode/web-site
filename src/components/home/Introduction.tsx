@@ -3,8 +3,8 @@ import { AtSignIcon, ArrowForwardIcon } from '@chakra-ui/icons'
 import HomeCard from './HomeCard'
 
 const Introduction = (): JSX.Element => (
-  <HomeCard background="whiteAlpha.50" compact>
-    <VStack>
+  <HomeCard background="url('/background.svg')" compact>
+    <VStack paddingY="7">
       <Heading textAlign="center" size="4xl" letterSpacing="tighter">
         Conecta tu negocio a Internet
       </Heading>
