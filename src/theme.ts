@@ -4,6 +4,9 @@ const customizedTheme = {
       body: {
         bg: '#091220',
       },
+      '::selection': {
+        background: '#8093F1',
+      },
     },
   },
   colors: {
