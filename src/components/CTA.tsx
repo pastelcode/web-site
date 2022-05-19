@@ -1,7 +1,7 @@
 import { ArrowBackIcon, ArrowForwardIcon } from '@chakra-ui/icons'
 import { Box, Heading, HStack, VStack } from '@chakra-ui/react'
-import ContactUsButton from '../ContactUsButton'
-import HomeCard from './HomeCard'
+import ContactUsButton from './ContactUsButton'
+import HomeCard from './home/HomeCard'
 
 const CTA = (): JSX.Element => (
   <HomeCard background="url('/waves.svg') center repeat-x">

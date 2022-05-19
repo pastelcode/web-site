@@ -5,9 +5,9 @@ import {
 } from '@chakra-ui/react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
-import Home from './pages/Home'
+import Home from '../pages/Home'
 
-import customizedTheme from './theme'
+import customizedTheme from '../theme'
 
 const theme = extendTheme(
   customizedTheme,
