@@ -10,7 +10,7 @@ import {
 
 import HomeCard from './HomeCard'
 
-import reasonsToChooseUs from '../../config/reasonsToChooseUs'
+import { reasonsToChooseUs } from '../../config/brandInformation'
 
 const WhyToChooseUs = (): JSX.Element => (
   <HomeCard>

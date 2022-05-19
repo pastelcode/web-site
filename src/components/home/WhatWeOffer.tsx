@@ -12,7 +12,7 @@ import {
 
 import HomeCard from './HomeCard'
 
-import ourServices from '../../config/ourServices'
+import { ourServices } from '../../config/brandInformation'
 
 const WhatWeOffer = (): JSX.Element => (
   <HomeCard>
