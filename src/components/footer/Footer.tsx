@@ -8,15 +8,19 @@ import {
   Icon,
   Heading,
 } from '@chakra-ui/react'
-import { socialMedia } from '../../config/brandInformation'
+import {
+  brandLetters,
+  brandLogo,
+  socialMedia,
+} from '../../config/brandInformation'
 
 const Footer = (): JSX.Element => {
   return (
     <Box as="footer" padding={7} paddingTop={20}>
       <VStack>
-        <Image src="/pastel.svg" alt="Pastel" height={24} />
+        <Image src={brandLogo} alt="Pastel" height={24} />
         <Box height={1} />
-        <Image src="/pastel-letters.svg" alt="Pastel" height={7} />
+        <Image src={brandLetters} alt="Pastel" height={7} />
         <Box height={6} />
         {socialMedia.map(({ url, name, icon }) => (
           <LinkBox key={url}>

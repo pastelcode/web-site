@@ -70,3 +70,6 @@ export const reasonsToChooseUs: ReasonToChooseUs[] = [
     icon: BiHeart,
   },
 ]
+
+export const brandLogo = '/pastel.svg'
+export const brandLetters = '/pastel-letters.svg'
