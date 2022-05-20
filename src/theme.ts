@@ -1,3 +1,14 @@
+import { ComponentMultiStyleConfig } from '@chakra-ui/theme'
+
+const Drawer: ComponentMultiStyleConfig = {
+  parts: ['dialogContainer'],
+  baseStyle: {
+    dialog: {
+      background: '#10203A',
+    },
+  },
+}
+
 const customizedTheme = {
   styles: {
     global: {
@@ -26,6 +37,9 @@ const customizedTheme = {
   fonts: {
     body: 'Inter, system-ui, sans-serif',
     heading: 'Inter, system-ui serif',
+  },
+  components: {
+    Drawer,
   },
   config: {
     initialColorMode: 'dark',
