@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
-import { Box, HStack, Image } from '@chakra-ui/react'
+import { Box, HStack, Image, useMediaQuery } from '@chakra-ui/react'
+
+import SmallMenu from './smallMenu/SmallMenu'
 
 import { brandLetters, brandLogo } from '../../config/brandInformation'
-import SmallMenu from './smallMenu/SmallMenu'
 
 const NavBar = () => {
   const [scrollPosition, setScrollPosition] = useState<number>(0)
@@ -20,6 +21,8 @@ const NavBar = () => {
     }
   }, [])
 
+  const [isSmallDisplayDevice] = useMediaQuery('(max-width: 600px)')
+
   return (
     <Box
       as="nav"
@@ -35,7 +38,7 @@ const NavBar = () => {
           <Image src={brandLogo} alt="Pastel" height="60%" />
           <Image src={brandLetters} alt="Pastel" height="30%" />
         </HStack>
-        <SmallMenu />
+        {isSmallDisplayDevice ? <SmallMenu /> : <></>}
       </HStack>
     </Box>
   )
