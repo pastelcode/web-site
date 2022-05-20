@@ -1,7 +1,7 @@
 import { IconType } from 'react-icons'
 import { BiAt, BiHome, BiTask } from 'react-icons/bi'
 
-interface Route {
+export interface Route {
   path: string
   name: string
   icon: IconType
