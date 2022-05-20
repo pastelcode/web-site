@@ -8,6 +8,10 @@ import {
   DrawerBody,
 } from '@chakra-ui/react'
 
+import DrawerLinkItem from './DrawerLinkItem'
+
+import applicationRoutes from '../../../config/applicationRoutes'
+
 interface Props {
   isOpen: boolean
   onClose: () => void
@@ -26,7 +30,11 @@ const DrawerMenu = ({ isOpen, onClose, buttonReference }: Props) => {
       <DrawerContent>
         <DrawerCloseButton />
         <DrawerHeader fontSize="3xl">Menú</DrawerHeader>
-        <DrawerBody></DrawerBody>
+        <DrawerBody>
+          {applicationRoutes.map((route) => (
+            <DrawerLinkItem key={route.path} {...route} />
+          ))}
+        </DrawerBody>
       </DrawerContent>
     </Drawer>
   )
