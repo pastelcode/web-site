@@ -25,7 +25,7 @@ const DrawerMenu = ({ isOpen, onClose, buttonReference }: Props) => {
       <DrawerOverlay />
       <DrawerContent>
         <DrawerCloseButton />
-        <DrawerHeader>Menú</DrawerHeader>
+        <DrawerHeader fontSize="3xl">Menú</DrawerHeader>
         <DrawerBody></DrawerBody>
       </DrawerContent>
     </Drawer>

@@ -5,6 +5,7 @@ const Drawer: ComponentMultiStyleConfig = {
   baseStyle: {
     dialog: {
       background: '#10203A',
+      borderTopRadius: '3xl',
     },
   },
 }
