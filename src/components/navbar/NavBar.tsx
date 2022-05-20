@@ -27,6 +27,7 @@ const NavBar = () => {
       transform="translateZ(0)"
       zIndex="sticky"
       background={scrollPosition >= 75 ? 'blackAlpha.800' : 'transparent'}
+      paddingX={5}
     >
       <HStack>
         <HStack height={16}>
