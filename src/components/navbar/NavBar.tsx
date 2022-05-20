@@ -25,7 +25,6 @@ const NavBar = () => {
       as="nav"
       position="sticky"
       top={0}
-      width="100%"
       transform="translateZ(0)"
       zIndex="sticky"
       background={scrollPosition >= 75 ? 'blackAlpha.800' : 'transparent'}
