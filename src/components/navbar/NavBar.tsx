@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Link as RouterLink } from 'react-router-dom'
 import { Box, HStack, Image, useMediaQuery } from '@chakra-ui/react'
 
 import NormalMenu from './normalMenu/NormalMenu'
@@ -35,7 +36,7 @@ const NavBar = () => {
       paddingX={5}
     >
       <HStack justifyContent="space-between">
-        <HStack height={16}>
+        <HStack as={RouterLink} to="/" height={16}>
           <Image src={brandLogo} alt="Pastel" height="60%" />
           <Image src={brandLetters} alt="Pastel" height="30%" />
         </HStack>
