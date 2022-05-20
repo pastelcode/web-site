@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Box, HStack, Image, useMediaQuery } from '@chakra-ui/react'
 
+import NormalMenu from './normalMenu/NormalMenu'
 import SmallMenu from './smallMenu/SmallMenu'
 
 import { brandLetters, brandLogo } from '../../config/brandInformation'
@@ -38,7 +39,7 @@ const NavBar = () => {
           <Image src={brandLogo} alt="Pastel" height="60%" />
           <Image src={brandLetters} alt="Pastel" height="30%" />
         </HStack>
-        {isSmallDisplayDevice ? <SmallMenu /> : <></>}
+        {isSmallDisplayDevice ? <SmallMenu /> : <NormalMenu />}
       </HStack>
     </Box>
   )
