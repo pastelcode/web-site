@@ -1,3 +1,4 @@
+import { Link as RouterLink } from 'react-router-dom'
 import { ArrowForwardIcon } from '@chakra-ui/icons'
 import {
   Heading,
@@ -52,7 +53,13 @@ const WhatWeOffer = (): JSX.Element => (
                   {description}
                 </Text>
                 <Divider />
-                <Link fontWeight="semibold" paddingX="7" paddingY="4">
+                <Link
+                  as={RouterLink}
+                  to={`/contacto?referencia=${title}`}
+                  fontWeight="semibold"
+                  paddingX="7"
+                  paddingY="4"
+                >
                   Comencemos <ArrowForwardIcon />
                 </Link>
               </Grid>
