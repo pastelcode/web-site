@@ -11,6 +11,7 @@ interface Props {
   type?: React.HTMLInputTypeAttribute | undefined
   errorDescription?: string | undefined
   isTouched?: boolean | undefined
+  isRequired?: boolean | undefined
   placeholder?: string | undefined
   onChange?: React.ChangeEventHandler<HTMLInputElement> | undefined
   onBlur?: React.FocusEventHandler<HTMLInputElement> | undefined
@@ -22,12 +23,16 @@ const TextInput = ({
   type,
   errorDescription,
   isTouched,
+  isRequired,
   placeholder,
   onChange,
   onBlur,
 }: Props): JSX.Element => {
   return (
-    <FormControl isInvalid={Boolean(errorDescription) && isTouched}>
+    <FormControl
+      isInvalid={Boolean(errorDescription) && isTouched}
+      isRequired={isRequired}
+    >
       <FormLabel htmlFor={name}>{label}</FormLabel>
       <Input
         id={name}

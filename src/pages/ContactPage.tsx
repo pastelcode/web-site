@@ -57,6 +57,7 @@ const ContactPage = (): JSX.Element => {
                 {() => (
                   <TextInput
                     name="email"
+                    type="email"
                     label="Correo electrónico"
                     isTouched={touched.email}
                     errorDescription={errors.email}
