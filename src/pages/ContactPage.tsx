@@ -46,6 +46,7 @@ const ContactPage = (): JSX.Element => {
                     name="name"
                     label="Nombre"
                     isTouched={touched.name}
+                    isRequired
                     errorDescription={errors.name}
                     placeholder="Alfredo González"
                     onChange={handleChange}
@@ -60,6 +61,7 @@ const ContactPage = (): JSX.Element => {
                     type="email"
                     label="Correo electrónico"
                     isTouched={touched.email}
+                    isRequired
                     errorDescription={errors.email}
                     placeholder="alfredo@correo.com"
                     onChange={handleChange}
