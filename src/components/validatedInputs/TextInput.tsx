@@ -7,6 +7,7 @@ import {
 
 interface Props {
   name: string
+  label?: string | undefined
   type?: React.HTMLInputTypeAttribute | undefined
   errorDescription?: string | undefined
   isTouched?: boolean | undefined
@@ -17,6 +18,7 @@ interface Props {
 
 const TextInput = ({
   name,
+  label,
   type,
   errorDescription,
   isTouched,
@@ -26,7 +28,7 @@ const TextInput = ({
 }: Props): JSX.Element => {
   return (
     <FormControl isInvalid={Boolean(errorDescription) && isTouched}>
-      <FormLabel htmlFor={name}>Nombre</FormLabel>
+      <FormLabel htmlFor={name}>{label}</FormLabel>
       <Input
         id={name}
         type={type}

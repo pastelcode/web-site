@@ -34,6 +34,7 @@ const ContactPage = (): JSX.Element => {
                 {() => (
                   <TextInput
                     name="name"
+                    label="Nombre"
                     isTouched={touched.name}
                     errorDescription={errors.name}
                     placeholder="Alfredo González"
@@ -46,6 +47,7 @@ const ContactPage = (): JSX.Element => {
                 {() => (
                   <TextInput
                     name="email"
+                    label="Correo electrónico"
                     isTouched={touched.email}
                     errorDescription={errors.email}
                     placeholder="alfredo@correo.com"
