@@ -16,13 +16,23 @@ const DataScheme = yup.object().shape({
     .required('Tu correo es requerido'),
 })
 
+interface FormValues {
+  name: string
+  email: string
+}
+
 const ContactPage = (): JSX.Element => {
+  const initialFormValues: FormValues = {
+    name: '',
+    email: '',
+  }
+
   return (
     <VStack>
       <Heading>Contacto</Heading>
       <Formik
         validationSchema={DataScheme}
-        initialValues={{ name: '', email: '' }}
+        initialValues={initialFormValues}
         onSubmit={(values) => {
           console.table(values)
         }}
