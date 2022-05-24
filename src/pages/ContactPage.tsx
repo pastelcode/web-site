@@ -12,12 +12,35 @@ import {
   Textarea,
   VStack,
 } from '@chakra-ui/react'
-import { Field, Form, Formik } from 'formik'
+import { Field, Form, Formik, FormikHelpers } from 'formik'
 import * as yup from 'yup'
 
 import TextInput from '../components/validatedInputs/TextInput'
 
 import { ourServices } from '../config/brandInformation'
+
+const encode = (data: FormValues) => {
+  return Object.keys(data)
+    .map(
+      (key: keyof FormValues) =>
+        encodeURIComponent(key) + '=' + encodeURIComponent(data[key].toString())
+    )
+    .join('&')
+}
+
+const handleSubmit = async (
+  data: FormValues,
+  { setSubmitting }: FormikHelpers<FormValues>
+) => {
+  const response = await fetch('/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: encode({ 'form-name': 'contact', ...data }),
+  })
+  if (response.ok) {
+    setSubmitting(false)
+  }
+}
 
 const DataScheme = yup.object().shape({
   name: yup
@@ -32,6 +55,7 @@ const DataScheme = yup.object().shape({
 })
 
 interface FormValues {
+  [k: string]: string | string[]
   name: string
   email: string
   services: string[]
@@ -64,13 +88,11 @@ const ContactPage = (): JSX.Element => {
         <Formik
           validationSchema={DataScheme}
           initialValues={initialFormValues}
-          onSubmit={(values) => {
-            console.table(values)
-          }}
+          onSubmit={handleSubmit}
         >
           {({ errors, touched, isSubmitting, handleBlur, handleChange }) => {
             return (
-              <Form>
+              <Form name="contact" data-netlify="true">
                 <VStack spacing={7}>
                   <Field name="name">
                     {() => (
