@@ -12,6 +12,7 @@ interface Props {
   errorDescription?: string | undefined
   isTouched?: boolean | undefined
   isRequired?: boolean | undefined
+  autoFocus?: boolean | undefined
   placeholder?: string | undefined
   onChange?: React.ChangeEventHandler<HTMLInputElement> | undefined
   onBlur?: React.FocusEventHandler<HTMLInputElement> | undefined
@@ -24,6 +25,7 @@ const TextInput = ({
   errorDescription,
   isTouched,
   isRequired,
+  autoFocus,
   placeholder,
   onChange,
   onBlur,
@@ -40,6 +42,7 @@ const TextInput = ({
         placeholder={placeholder}
         onChange={onChange}
         onBlur={onBlur}
+        autoFocus={autoFocus}
       />
       <FormErrorMessage>{errorDescription}</FormErrorMessage>
     </FormControl>

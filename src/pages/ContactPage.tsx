@@ -60,6 +60,7 @@ const ContactPage = (): JSX.Element => {
                     label="Nombre"
                     isTouched={touched.name}
                     isRequired
+                    autoFocus
                     errorDescription={errors.name}
                     placeholder="Alfredo González"
                     onChange={handleChange}
