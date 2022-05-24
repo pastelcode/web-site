@@ -1,5 +1,6 @@
 import { useSearchParams } from 'react-router-dom'
 import {
+  Box,
   Button,
   Checkbox,
   CheckboxGroup,
@@ -50,94 +51,98 @@ const ContactPage = (): JSX.Element => {
   return (
     <VStack>
       <Heading>Contacto</Heading>
-      <Formik
-        validationSchema={DataScheme}
-        initialValues={initialFormValues}
-        onSubmit={(values) => {
-          console.table(values)
-        }}
-      >
-        {({ errors, touched, isSubmitting, handleBlur, handleChange }) => {
-          return (
-            <Form>
-              <Field name="name">
-                {() => (
-                  <TextInput
-                    name="name"
-                    label="Nombre"
-                    isTouched={touched.name}
-                    isRequired
-                    autoFocus
-                    errorDescription={errors.name}
-                    placeholder="Alfredo González"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                  />
-                )}
-              </Field>
-              <Field name="email">
-                {() => (
-                  <TextInput
-                    name="email"
-                    type="email"
-                    label="Correo electrónico"
-                    isTouched={touched.email}
-                    isRequired
-                    errorDescription={errors.email}
-                    placeholder="alfredo@correo.com"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                  />
-                )}
-              </Field>
-              <Field name="services" type="checkbox">
-                {() => (
-                  <FormControl as="fieldset">
-                    <FormLabel as="legend">Servicios</FormLabel>
-                    <CheckboxGroup
-                      defaultValue={[defaultCheckboxesValue ?? '']}
-                    >
-                      <VStack alignItems="start">
-                        {ourServices.map(({ title }) => (
-                          <Checkbox
-                            key={title}
-                            id="services"
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                            value={title}
-                          >
-                            {title}
-                          </Checkbox>
-                        ))}
-                      </VStack>
-                    </CheckboxGroup>
-                    <FormHelperText>
-                      Selecciona los servicios que sean necesarios para los
-                      requerimientos de tu proyecto
-                    </FormHelperText>
-                  </FormControl>
-                )}
-              </Field>
-              <Field name="message" type="textarea">
-                {() => (
-                  <FormControl>
-                    <FormLabel htmlFor="message">Mensaje</FormLabel>
-                    <Textarea
-                      id="message"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      placeholder="El proyecto será lanzado al mercado el..."
-                    />
-                  </FormControl>
-                )}
-              </Field>
-              <Button isLoading={isSubmitting} type="submit">
-                Enviar
-              </Button>
-            </Form>
-          )
-        }}
-      </Formik>
+      <Box width="90%" maxWidth="500px">
+        <Formik
+          validationSchema={DataScheme}
+          initialValues={initialFormValues}
+          onSubmit={(values) => {
+            console.table(values)
+          }}
+        >
+          {({ errors, touched, isSubmitting, handleBlur, handleChange }) => {
+            return (
+              <Form>
+                <VStack spacing={7}>
+                  <Field name="name">
+                    {() => (
+                      <TextInput
+                        name="name"
+                        label="Nombre"
+                        isTouched={touched.name}
+                        isRequired
+                        autoFocus
+                        errorDescription={errors.name}
+                        placeholder="Alfredo González"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                      />
+                    )}
+                  </Field>
+                  <Field name="email">
+                    {() => (
+                      <TextInput
+                        name="email"
+                        type="email"
+                        label="Correo electrónico"
+                        isTouched={touched.email}
+                        isRequired
+                        errorDescription={errors.email}
+                        placeholder="alfredo@correo.com"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                      />
+                    )}
+                  </Field>
+                  <Field name="services" type="checkbox">
+                    {() => (
+                      <FormControl as="fieldset">
+                        <FormLabel as="legend">Servicios</FormLabel>
+                        <CheckboxGroup
+                          defaultValue={[defaultCheckboxesValue ?? '']}
+                        >
+                          <VStack alignItems="start">
+                            {ourServices.map(({ title }) => (
+                              <Checkbox
+                                key={title}
+                                id="services"
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                value={title}
+                              >
+                                {title}
+                              </Checkbox>
+                            ))}
+                          </VStack>
+                        </CheckboxGroup>
+                        <FormHelperText>
+                          Selecciona los servicios que sean necesarios para los
+                          requerimientos de tu proyecto
+                        </FormHelperText>
+                      </FormControl>
+                    )}
+                  </Field>
+                  <Field name="message" type="textarea">
+                    {() => (
+                      <FormControl>
+                        <FormLabel htmlFor="message">Mensaje</FormLabel>
+                        <Textarea
+                          id="message"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          placeholder="El proyecto será lanzado al mercado el..."
+                        />
+                      </FormControl>
+                    )}
+                  </Field>
+                  <Button isLoading={isSubmitting} type="submit">
+                    Enviar
+                  </Button>
+                </VStack>
+              </Form>
+            )
+          }}
+        </Formik>
+      </Box>
     </VStack>
   )
 }
