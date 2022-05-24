@@ -19,12 +19,14 @@ const DataScheme = yup.object().shape({
 interface FormValues {
   name: string
   email: string
+  services: string[]
 }
 
 const ContactPage = (): JSX.Element => {
   const initialFormValues: FormValues = {
     name: '',
     email: '',
+    services: [],
   }
 
   return (
