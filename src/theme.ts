@@ -1,7 +1,7 @@
 import { ComponentMultiStyleConfig } from '@chakra-ui/theme'
 
 const Drawer: ComponentMultiStyleConfig = {
-  parts: ['dialogContainer'],
+  parts: ['dialog'],
   baseStyle: {
     dialog: {
       background: '#10203A',
