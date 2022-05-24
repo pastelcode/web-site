@@ -35,7 +35,11 @@ const handleSubmit = async (
   const response = await fetch('/', {
     method: 'POST',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: encode({ 'form-name': 'contact', ...data }),
+    body: encode({
+      'form-name': 'contact',
+      subject: 'Cotización de servicios informáticos',
+      ...data,
+    }),
   })
   if (response.ok) {
     setSubmitting(false)
