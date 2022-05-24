@@ -8,6 +8,7 @@ import {
   FormHelperText,
   FormLabel,
   Heading,
+  Image,
   Textarea,
   VStack,
 } from '@chakra-ui/react'
@@ -50,6 +51,14 @@ const ContactPage = (): JSX.Element => {
 
   return (
     <VStack>
+      <Image
+        src="/layered-waves-up.svg"
+        alt="Waves illustration"
+        height={20}
+        width="100%"
+        objectFit="cover"
+        objectPosition="bottom"
+      />
       <Heading>Contacto</Heading>
       <Box width="90%" maxWidth="500px">
         <Formik
@@ -143,6 +152,14 @@ const ContactPage = (): JSX.Element => {
           }}
         </Formik>
       </Box>
+      <Image
+        src="/layered-waves-down.svg"
+        alt="Waves illustration"
+        height={20}
+        width="100%"
+        objectFit="cover"
+        objectPosition="top"
+      />
     </VStack>
   )
 }
