@@ -6,6 +6,7 @@ import {
   FormHelperText,
   FormLabel,
   Heading,
+  Textarea,
   VStack,
 } from '@chakra-ui/react'
 import { Field, Form, Formik } from 'formik'
@@ -31,6 +32,7 @@ interface FormValues {
   name: string
   email: string
   services: string[]
+  message: string
 }
 
 const ContactPage = (): JSX.Element => {
@@ -38,6 +40,7 @@ const ContactPage = (): JSX.Element => {
     name: '',
     email: '',
     services: [],
+    message: '',
   }
 
   return (
@@ -106,6 +109,19 @@ const ContactPage = (): JSX.Element => {
                       Selecciona los servicios que sean necesarios para los
                       requerimientos de tu proyecto
                     </FormHelperText>
+                  </FormControl>
+                )}
+              </Field>
+              <Field name="message" type="textarea">
+                {() => (
+                  <FormControl>
+                    <FormLabel htmlFor="message">Mensaje</FormLabel>
+                    <Textarea
+                      id="message"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      placeholder="El proyecto será lanzado al mercado el..."
+                    />
                   </FormControl>
                 )}
               </Field>
