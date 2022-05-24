@@ -2,6 +2,8 @@ import {
   Button,
   Checkbox,
   CheckboxGroup,
+  FormControl,
+  FormHelperText,
   FormLabel,
   Heading,
   VStack,
@@ -82,8 +84,8 @@ const ContactPage = (): JSX.Element => {
               </Field>
               <Field name="services" type="checkbox">
                 {() => (
-                  <>
-                    <FormLabel>Servicios</FormLabel>
+                  <FormControl as="fieldset">
+                    <FormLabel as="legend">Servicios</FormLabel>
                     <CheckboxGroup>
                       <VStack alignItems="start">
                         {ourServices.map(({ title }) => (
@@ -99,7 +101,11 @@ const ContactPage = (): JSX.Element => {
                         ))}
                       </VStack>
                     </CheckboxGroup>
-                  </>
+                    <FormHelperText>
+                      Selecciona los servicios que sean necesarios para los
+                      requerimientos de tu proyecto
+                    </FormHelperText>
+                  </FormControl>
                 )}
               </Field>
               <Button isLoading={isSubmitting} type="submit">
