@@ -37,6 +37,7 @@ const handleSubmit = async (
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     body: encode({
       'form-name': 'contact',
+      subject: 'Cotización de servicios informáticos',
       ...data,
     }),
   })
