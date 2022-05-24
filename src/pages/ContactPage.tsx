@@ -1,8 +1,17 @@
-import { Button, Heading, VStack } from '@chakra-ui/react'
+import {
+  Button,
+  Checkbox,
+  CheckboxGroup,
+  FormLabel,
+  Heading,
+  VStack,
+} from '@chakra-ui/react'
 import { Field, Form, Formik } from 'formik'
 import * as yup from 'yup'
 
 import TextInput from '../components/validatedInputs/TextInput'
+
+import { ourServices } from '../config/brandInformation'
 
 const DataScheme = yup.object().shape({
   name: yup
@@ -69,6 +78,28 @@ const ContactPage = (): JSX.Element => {
                     onChange={handleChange}
                     onBlur={handleBlur}
                   />
+                )}
+              </Field>
+              <Field name="services" type="checkbox">
+                {() => (
+                  <>
+                    <FormLabel>Servicios</FormLabel>
+                    <CheckboxGroup>
+                      <VStack alignItems="start">
+                        {ourServices.map(({ title }) => (
+                          <Checkbox
+                            key={title}
+                            id="services"
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            value={title}
+                          >
+                            {title}
+                          </Checkbox>
+                        ))}
+                      </VStack>
+                    </CheckboxGroup>
+                  </>
                 )}
               </Field>
               <Button isLoading={isSubmitting} type="submit">
