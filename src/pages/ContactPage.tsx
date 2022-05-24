@@ -1,3 +1,4 @@
+import { useSearchParams } from 'react-router-dom'
 import {
   Button,
   Checkbox,
@@ -36,6 +37,9 @@ interface FormValues {
 }
 
 const ContactPage = (): JSX.Element => {
+  const [search] = useSearchParams()
+  const defaultCheckboxesValue = search.get('referencia')
+
   const initialFormValues: FormValues = {
     name: '',
     email: '',
@@ -90,7 +94,9 @@ const ContactPage = (): JSX.Element => {
                 {() => (
                   <FormControl as="fieldset">
                     <FormLabel as="legend">Servicios</FormLabel>
-                    <CheckboxGroup>
+                    <CheckboxGroup
+                      defaultValue={[defaultCheckboxesValue ?? '']}
+                    >
                       <VStack alignItems="start">
                         {ourServices.map(({ title }) => (
                           <Checkbox
