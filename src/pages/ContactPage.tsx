@@ -1,3 +1,5 @@
+// Form information is being sent to Netlify's forms service
+
 import { useSearchParams } from 'react-router-dom'
 import {
   Box,
