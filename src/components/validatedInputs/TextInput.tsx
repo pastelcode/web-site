@@ -7,6 +7,7 @@ import {
 
 interface Props {
   name: string
+  value?: string | number | readonly string[] | undefined
   label?: string | undefined
   type?: React.HTMLInputTypeAttribute | undefined
   errorDescription?: string | undefined
@@ -20,6 +21,7 @@ interface Props {
 
 const TextInput = ({
   name,
+  value,
   label,
   type,
   errorDescription,
@@ -38,6 +40,7 @@ const TextInput = ({
       <FormLabel htmlFor={name}>{label}</FormLabel>
       <Input
         id={name}
+        value={value}
         type={type}
         placeholder={placeholder}
         onChange={onChange}
