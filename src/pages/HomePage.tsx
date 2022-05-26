@@ -5,7 +5,7 @@ import Introduction from '../components/home/Introduction'
 import WhatWeOffer from '../components/home/WhatWeOffer'
 import WhyToChooseUs from '../components/home/WhyToChooseUs'
 
-const Home = (): JSX.Element => {
+const HomePage = (): JSX.Element => {
   return (
     <VStack>
       <Introduction />
@@ -16,4 +16,4 @@ const Home = (): JSX.Element => {
   )
 }
 
-export default Home
+export default HomePage

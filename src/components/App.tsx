@@ -5,11 +5,12 @@ import {
 } from '@chakra-ui/react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
-import Home from '../pages/Home'
+import HomePage from '../pages/HomePage'
 import Footer from './footer/Footer'
 import NavBar from './navbar/NavBar'
 
 import customizedTheme from '../theme'
+import ContactPage from '../pages/ContactPage'
 
 const theme = extendTheme(
   customizedTheme,
@@ -22,7 +23,8 @@ const App = () => {
       <Router>
         <NavBar />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/contacto" element={<ContactPage />} />
         </Routes>
         <Footer />
       </Router>
