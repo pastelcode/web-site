@@ -63,7 +63,7 @@ const ContactPage = (): JSX.Element => {
   const initialFormValues: FormValues = {
     name: '',
     email: '',
-    services: [defaultCheckboxesValue ?? ''],
+    services: defaultCheckboxesValue ? [defaultCheckboxesValue] : [],
     message: '',
   }
 
