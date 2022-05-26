@@ -12,6 +12,7 @@ import {
   Heading,
   Image,
   Textarea,
+  useToast,
   VStack,
 } from '@chakra-ui/react'
 import { Field, Form, Formik, FormikHelpers } from 'formik'
@@ -20,63 +21,75 @@ import * as yup from 'yup'
 import TextInput from '../components/validatedInputs/TextInput'
 
 import { ourServices } from '../config/brandInformation'
-
-const encode = (data: FormValues) => {
-  return Object.keys(data)
-    .map(
-      (key: keyof FormValues) =>
-        encodeURIComponent(key) + '=' + encodeURIComponent(data[key].toString())
-    )
-    .join('&')
-}
-
-const handleSubmit = async (
-  data: FormValues,
-  { setSubmitting }: FormikHelpers<FormValues>
-) => {
-  const response = await fetch('/', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: encode({
-      'form-name': 'contact',
-      subject: 'Cotización de servicios informáticos',
-      ...data,
-    }),
-  })
-  if (response.ok) {
-    setSubmitting(false)
-  }
-}
-
-const DataScheme = yup.object().shape({
-  name: yup
-    .string()
-    .min(2, 'Debe tener al menos 2 caracteres')
-    .max(50, 'Debe ser de 50 caracteres como máximo')
-    .required('Tu nombre es requerido'),
-  email: yup
-    .string()
-    .email('Correo inválido')
-    .required('Tu correo es requerido'),
-})
-
-interface FormValues {
-  [k: string]: string | string[]
-  name: string
-  email: string
-  services: string[]
-  message: string
-}
+import { errorToast, successToast } from '../components/contact/statusToasts'
 
 const ContactPage = (): JSX.Element => {
+  const encode = (data: FormValues) => {
+    return Object.keys(data)
+      .map(
+        (key: keyof FormValues) =>
+          encodeURIComponent(key) +
+          '=' +
+          encodeURIComponent(data[key].toString())
+      )
+      .join('&')
+  }
+
+  const DataScheme = yup.object().shape({
+    name: yup
+      .string()
+      .min(2, 'Debe tener al menos 2 caracteres')
+      .max(50, 'Debe ser de 50 caracteres como máximo')
+      .required('Tu nombre es requerido'),
+    email: yup
+      .string()
+      .email('Correo inválido')
+      .required('Tu correo es requerido'),
+  })
+
+  interface FormValues {
+    [k: string]: string | string[]
+    name: string
+    email: string
+    services: string[]
+    message: string
+  }
+
+  const toast = useToast()
+
   const [search] = useSearchParams()
-  const defaultCheckboxesValue = search.get('referencia')
+  const defaultCheckboxesValue: string | null = search.get('referencia')
 
   const initialFormValues: FormValues = {
     name: '',
     email: '',
     services: [],
     message: '',
+  }
+
+  const handleSubmit = async (
+    data: FormValues,
+    { setSubmitting, resetForm }: FormikHelpers<FormValues>
+  ): Promise<void> => {
+    const response = await fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encode({
+        'form-name': 'contact',
+        subject: 'Cotización de servicios informáticos',
+        ...data,
+      }),
+    })
+
+    setSubmitting(false)
+
+    toast.closeAll()
+    if (response.ok) {
+      resetForm()
+      toast(successToast)
+    } else {
+      toast(errorToast)
+    }
   }
 
   return (
@@ -96,7 +109,14 @@ const ContactPage = (): JSX.Element => {
           initialValues={initialFormValues}
           onSubmit={handleSubmit}
         >
-          {({ errors, touched, isSubmitting, handleBlur, handleChange }) => {
+          {({
+            errors,
+            touched,
+            isSubmitting,
+            handleBlur,
+            handleChange,
+            values,
+          }) => {
             return (
               <Form name="contact" data-netlify="true">
                 <VStack spacing={7}>
@@ -104,6 +124,7 @@ const ContactPage = (): JSX.Element => {
                     {() => (
                       <TextInput
                         name="name"
+                        value={values.name}
                         label="Nombre"
                         isTouched={touched.name}
                         isRequired
@@ -119,6 +140,7 @@ const ContactPage = (): JSX.Element => {
                     {() => (
                       <TextInput
                         name="email"
+                        value={values.email}
                         type="email"
                         label="Correo electrónico"
                         isTouched={touched.email}
@@ -164,6 +186,7 @@ const ContactPage = (): JSX.Element => {
                         <FormLabel htmlFor="message">Mensaje</FormLabel>
                         <Textarea
                           id="message"
+                          value={values.message}
                           onChange={handleChange}
                           onBlur={handleBlur}
                           placeholder="El proyecto será lanzado al mercado el..."
