@@ -9,6 +9,7 @@ import {
   Text,
   Link,
   Divider,
+  Badge,
 } from '@chakra-ui/react'
 
 import HomeCard from './HomeCard'
@@ -30,16 +31,17 @@ const WhatWeOffer = (): JSX.Element => (
         width="90%"
         maxWidth="1000px"
       >
-        {ourServices.map(({ title, description }) => {
+        {ourServices.map(({ title, description, isComingSoon }) => {
           return (
-            <GridItem
-              key={title}
-              borderRadius="xl"
-              border="2px"
-              borderColor="whiteAlpha.400"
-              overflow="hidden"
-            >
-              <Grid height="100%" gridTemplateRows="auto 1fr auto auto">
+            <GridItem key={title}>
+              <Grid
+                height="100%"
+                gridTemplateRows="auto 1fr auto auto"
+                borderRadius="xl"
+                border="2px"
+                borderColor="whiteAlpha.400"
+                overflow="hidden"
+              >
                 <Heading
                   size="lg"
                   background="brand.600"
@@ -53,15 +55,21 @@ const WhatWeOffer = (): JSX.Element => (
                   {description}
                 </Text>
                 <Divider />
-                <Link
-                  as={RouterLink}
-                  to={`/contacto?referencia=${title}`}
-                  fontWeight="semibold"
-                  paddingX="7"
-                  paddingY="4"
-                >
-                  Comencemos <ArrowForwardIcon />
-                </Link>
+                {isComingSoon ? (
+                  <Badge fontSize={14} paddingX={7} paddingY={4}>
+                    Próximamente
+                  </Badge>
+                ) : (
+                  <Link
+                    as={RouterLink}
+                    to={`/contacto?servicio=${title}`}
+                    fontWeight="semibold"
+                    paddingX="7"
+                    paddingY="4"
+                  >
+                    Comencemos <ArrowForwardIcon />
+                  </Link>
+                )}
               </Grid>
             </GridItem>
           )
