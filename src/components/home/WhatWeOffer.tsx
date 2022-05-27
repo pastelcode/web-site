@@ -62,7 +62,7 @@ const WhatWeOffer = (): JSX.Element => (
                 ) : (
                   <Link
                     as={RouterLink}
-                    to={`/contacto?referencia=${title}`}
+                    to={`/contacto?servicio=${title}`}
                     fontWeight="semibold"
                     paddingX="7"
                     paddingY="4"

@@ -12,6 +12,7 @@ import {
   Heading,
   Image,
   Textarea,
+  Tooltip,
   useToast,
   VStack,
 } from '@chakra-ui/react'
@@ -58,7 +59,7 @@ const ContactPage = (): JSX.Element => {
   const toast = useToast()
 
   const [search] = useSearchParams()
-  const defaultCheckboxesValue: string | null = search.get('referencia')
+  const defaultCheckboxesValue: string | null = search.get('servicio')
 
   const initialFormValues: FormValues = {
     name: '',
@@ -160,16 +161,24 @@ const ContactPage = (): JSX.Element => {
                           defaultValue={[defaultCheckboxesValue ?? '']}
                         >
                           <VStack alignItems="start">
-                            {ourServices.map(({ title }) => (
-                              <Checkbox
-                                key={title}
-                                id="services"
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                value={title}
+                            {ourServices.map(({ title, isComingSoon }) => (
+                              <Tooltip
+                                label="Este servicio no está disponible actualmente"
+                                isDisabled={!isComingSoon}
+                                shouldWrapChildren
+                                hasArrow
                               >
-                                {title}
-                              </Checkbox>
+                                <Checkbox
+                                  key={title}
+                                  id="services"
+                                  onChange={handleChange}
+                                  onBlur={handleBlur}
+                                  value={title}
+                                  isDisabled={isComingSoon}
+                                >
+                                  {title}
+                                </Checkbox>
+                              </Tooltip>
                             ))}
                           </VStack>
                         </CheckboxGroup>
