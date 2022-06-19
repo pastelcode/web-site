@@ -24,7 +24,7 @@ const Footer = (): JSX.Element => {
         <Box height={6} />
         {socialMedia.map(({ url, name, icon }) => (
           <LinkBox key={url}>
-            <HStack>
+            <HStack marginBottom={4}>
               <Icon as={icon} boxSize={6} />
               <Heading as="h6" size="md">
                 <LinkOverlay href={url} isExternal>
