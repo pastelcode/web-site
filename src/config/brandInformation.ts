@@ -21,6 +21,7 @@ interface Service {
   title: string
   description: string
   isComingSoon: boolean
+  basePrice?: number
 }
 
 export const ourServices: Service[] = [
@@ -29,12 +30,14 @@ export const ourServices: Service[] = [
     description:
       'Dale una bienvenida acogedora a tu cliente y permite que conozca lo que haces y contacte contigo',
     isComingSoon: false,
+    basePrice: 550,
   },
   {
     title: 'Aplicaciones móviles',
     description:
       'Mueve tu idea a la comodidad de la palma de la mano, en cualquier plataforma y en cualquier dispositivo',
     isComingSoon: false,
+    basePrice: 2500,
   },
   {
     title: 'Tiendas en línea',
