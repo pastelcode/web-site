@@ -31,7 +31,7 @@ const WhatWeOffer = (): JSX.Element => (
         width="90%"
         maxWidth="1000px"
       >
-        {ourServices.map(({ title, description, isComingSoon }) => {
+        {ourServices.map(({ title, description, isComingSoon, basePrice }) => {
           return (
             <GridItem key={title}>
               <Grid
@@ -51,9 +51,14 @@ const WhatWeOffer = (): JSX.Element => (
                 >
                   {title}
                 </Heading>
-                <Text paddingX="7" paddingY="4">
-                  {description}
-                </Text>
+                <VStack alignItems="start" paddingX="7" paddingY="4">
+                  <Text>{description}</Text>
+                  {!isComingSoon && (
+                    <Text fontSize="lg" fontStyle="italic">
+                      Desde Q{basePrice}
+                    </Text>
+                  )}
+                </VStack>
                 <Divider />
                 {isComingSoon ? (
                   <Badge fontSize={14} paddingX={7} paddingY={4}>
