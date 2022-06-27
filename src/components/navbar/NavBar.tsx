@@ -33,6 +33,7 @@ const NavBar = () => {
       transform="translateZ(0)"
       zIndex="sticky"
       background={scrollPosition >= 75 ? 'blackAlpha.800' : 'transparent'}
+      backdropFilter="blur(5px)"
       paddingX={5}
     >
       <HStack justifyContent="space-between">
